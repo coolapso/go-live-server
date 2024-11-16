@@ -28,6 +28,7 @@ var (
 	broadcast = make(chan bool)
 	browser   bool
 	file      string
+	Version   = "DEV"
 )
 
 var rootCmd = &cobra.Command{
@@ -42,6 +43,14 @@ It allows you to quickly edit and visualize changes when developing simple html 
 
 	Run: func(cmd *cobra.Command, args []string) {
 		liveServer()
+	},
+}
+
+var versionCmd = &cobra.Command{
+	Use:   "version",
+	Short: "Print live-server version",
+	Run: func(cmd *cobra.Command, args []string) {
+		fmt.Printf("live-server %s\n", Version)
 	},
 }
 
@@ -214,7 +223,7 @@ func liveServer() {
 	var wg sync.WaitGroup
 	wg.Add(1)
 	go func() {
-		log.Printf("listening on %v, press CTRC+C to terminate the server\n", port)
+		log.Printf("go-live-server %s listening on %v, press CTRC+C to terminate the server\n", Version, port)
 		if err := http.ListenAndServe(port, nil); err != nil {
 			log.Fatal(err)
 		}
@@ -232,6 +241,7 @@ func init() {
 	rootCmd.Flags().StringVarP(&port, "port", "p", ":8080", "The port server is going to listen on")
 	rootCmd.Flags().BoolVar(&browser, "browser", true, "Enable or disable automatic opening of the browser")
 	rootCmd.Flags().StringVar(&file, "open-file", "", "Specify the relative path to open the browser in the directory being served")
+	rootCmd.AddCommand(versionCmd)
 }
 
 func Execute() {
