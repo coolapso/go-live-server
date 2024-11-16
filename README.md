@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/coolapso/go-live-server/blob/main/media/go-live-server.png" width="200" >
+  <img src="https://github.com/coolapso/go-live-server/blob/main/test/images/goliveserver.png" width="200" >
 </p>
 
 # go-live-server
