@@ -28,7 +28,7 @@ if [[ "$VERSION" == "latest" ]]; then
 fi
 
 # Download URL for the release file and checksum
-FILE="go_live_server_${VERSION:1}_${OS}_${ARCH}.tar.gz"
+FILE="go-live-server_${VERSION:1}_${OS}_${ARCH}.tar.gz"
 FILE_URL="https://github.com/$REPO/releases/download/$VERSION/$FILE"
 
 # Download the file and checksum
