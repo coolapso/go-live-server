@@ -4,7 +4,7 @@ builds:
     env:
     - CGO_ENABLED=0
     ldflags:
-    - -X github.com/coolapso/megophone/cmd.Version={{.Version}}
+    - -X github.com/coolapso/go-live-server/cmd.Version={{.Version}}
 
 aurs:
   - name: go-live-server
