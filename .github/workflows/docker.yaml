@@ -1,0 +1,49 @@
+name: Docker
+on:
+  workflow_dispatch:
+    inputs:
+      release_tag:
+        required: true
+        description: The release tag to build
+  workflow_call:
+    inputs:
+      release_tag:
+        type: string
+        required: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: 
+          fetch-tags: true
+          fetch-depth: 0
+        
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+      
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+      
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ vars.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Set docker_tag
+        run: |
+          echo "got input: '${{ inputs.release_tag }}'"
+          echo "DOCKER_TAG=$(echo '${{ inputs.release_tag }}' | sed -E 's/^v//g')" >> $GITHUB_ENV
+          echo "Going to build: $DOCKER_TAG || '${{ env.DOCKER_TAG }}'"
+
+      - name: Build and push
+        uses: docker/build-push-action@v6
+        with:
+          platforms: linux/amd64,linux/arm64,linux/arm/v7
+          push: true
+          tags: coolapso/go-live-server:latest,coolapso/go-live-server:${{ env.DOCKER_TAG }}
+          build-args:
+            VERSION=${{ inputs.release_tag }}
+
