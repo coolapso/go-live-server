@@ -70,6 +70,12 @@ It allows you to quickly edit and visualize changes when developing simple html 
 
 Usage:
   live-server [flags]
+  live-server [command]
+
+Available Commands:
+  completion  Generate the autocompletion script for the specified shell
+  help        Help about any command
+  version     Print live-server version
 
 Flags:
       --browser            Enable or disable automatic opening of the browser (default true)
@@ -78,6 +84,7 @@ Flags:
   -p, --port string        The port server is going to listen on (default ":8080")
   -d, --watch-dir string   Sets the directory to watch for (default "./")
 
+Use "live-server [command] --help" for more information about a command.
 ```
 
 ## Build 
