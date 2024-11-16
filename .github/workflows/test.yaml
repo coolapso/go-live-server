@@ -1,0 +1,46 @@
+name: Go
+
+on: 
+  workflow_call:
+  workflow_dispatch:
+  pull_request:
+  push:
+    branches:
+      - '**'
+      - '!main'
+
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '>=1.23'
+
+      - name: Install dependencies
+        run: go get .
+
+      - name: Check formating
+        run: |
+          changedFiles=$(go fmt ./...)
+          if [[ -n $changedFiles ]]; then
+            echo -e "Follwing files are not formated:\n${changedFiles}"
+            exit 1
+          fi
+
+      - name: golangci-lint
+        uses: golangci/golangci-lint-action@v6
+        with:
+          version: latest
+          only-new-issues: true
+
+      - name: Run tests 
+        run: go test -cover ./...
+
+      - name: test build
+        run: go build -o live-server
