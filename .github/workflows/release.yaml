@@ -56,7 +56,7 @@ jobs:
           push: true
           tags: coolapso/go-live-server:latest,coolapso/go-live-server:${{ env.DOCKER_TAG }}
           build-args:
-            VERSION: ${{ steps.semrel.outputs.version }}
+            VERSION=${{ steps.semrel.outputs.version }}
 
       - name: Update Docker Hub Description
         uses: peter-evans/dockerhub-description@v4
