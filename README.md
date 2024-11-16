@@ -12,9 +12,15 @@ The server functions similarly to [tapio/liveserver](https://github.com/tapio/li
 
 ## Installation 
 
-### AUR
+### Docker
 
-On Arch linux you can use the AUR `go-live-server-bin`
+You can run go-live-server with docker: 
+
+```
+docker run -v $(pwd):/data -p 8080:8080 coolapso/go-live-server:latest
+```
+
+Now you can edit your html files and let go-live-server work its magic from within the docker container
 
 ### Go Install
 
@@ -25,6 +31,10 @@ On Arch linux you can use the AUR `go-live-server-bin`
 #### Specific version
 
 `go install github.com/coolapso/go-live-server@v1.0.0`
+
+### AUR
+
+On Arch linux you can use the AUR `go-live-server-bin`
 
 ### Linux Script
 
@@ -86,5 +96,6 @@ If you like this project and want to support / contribute in a different way you
   <img src="https://cdn.buymeacoffee.com/buttons/default-yellow.png" alt="Buy Me A Coffee" style="height: 51px !important;width: 217px !important;" />
 </a>
 
+<iframe src="https://github.com/sponsors/coolapso/button" title="Sponsor coolapso" height="32" width="114" style="border: 0; border-radius: 6px;"></iframe>
 
 Also consider supporting [tapio/live-server](https://github.com/tapio/live-server) which inspired this project
