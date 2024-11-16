@@ -24,7 +24,6 @@ jobs:
       - uses: go-semantic-release/action@v1
         id: semrel
         with:
-          allow-initial-development-versions: true
           custom-arguments: '--commit-analyzer-opt patch_release_rules=fix,ref,build'
           hooks: goreleaser
         env:
