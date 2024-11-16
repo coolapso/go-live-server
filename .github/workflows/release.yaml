@@ -43,5 +43,6 @@ jobs:
     needs: release
     uses: coolapso/go-live-server/.github/workflows/docker.yaml@main
     if: ${{ needs.release.outputs.version != '' }}
+    secrets: inherit
     with:
       release_tag: ${{ needs.release.outputs.version != '' }}
