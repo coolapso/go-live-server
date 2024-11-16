@@ -47,13 +47,13 @@ It is also possible to install on any linux distro with the installation script
 #### Latest version
 
 ```
-curl -L https://live-server.coolapso.sh/install.sh | bash
+curl -L http://live-server.coolapso.sh/install.sh | bash
 ```
 
 #### Specific version
 
 ```
-curl -L https://live-server.coolapso.sh/install.sh | VERSION="v1.1.0" bash
+curl -L http://live-server.coolapso.sh/install.sh | VERSION="v1.1.0" bash
 ```
 
 ### Manual install
