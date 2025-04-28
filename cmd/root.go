@@ -231,7 +231,10 @@ func liveServer() {
 
 	if browser {
 		time.Sleep(50 * time.Millisecond)
-		_ = util.OpenURL(fmt.Sprintf("http://localhost%s/%s", port, file))
+		browserErr := util.OpenURL(fmt.Sprintf("http://localhost%s/%s", port, file))
+		if browserErr != nil {
+			log.Fatal(browserErr)
+		}
 	}
 	wg.Wait()
 }
