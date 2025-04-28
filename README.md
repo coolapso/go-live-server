@@ -30,7 +30,7 @@ Now you can edit your html files and let go-live-server work its magic from with
 
 #### Latest version 
 
-`go install github.com/coolapso/go-live-server`
+`go install github.com/coolapso/go-live-server@latest`
 
 #### Specific version
 
