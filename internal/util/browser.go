@@ -17,6 +17,7 @@ func OpenURL(url string) error {
 		args = []string{"url.dll,FileProtocolHandler", url}
 	case "darwin":
 		cmd = "open"
+		args = []string{url}
 	default:
 		if isWSL() {
 			cmd = "cmd.exe"
