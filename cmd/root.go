@@ -146,8 +146,7 @@ func injectScript(w http.ResponseWriter, script, html string) {
 
 	w.Header().Set("Content-Type", "text/html")
 	if _, err := w.Write([]byte(html)); err != nil {
-		http.Error(w, "Failed to write content to response writer", http.StatusInternalServerError)
-		log.Println("Failed to write content to response writer:", err)
+		log.Printf("Client disconnected or failed to write: %v\n", err)
 	}
 }
 
