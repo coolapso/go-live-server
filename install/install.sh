@@ -1,15 +1,15 @@
 #!/bin/bash
 
+INSTALL_DIR="/usr/local/bin"
+
 ## check for root privileges
 if [ "$EUID" -ne 0 ]; then
-  echo "Please run as root"
-  exit
+    INSTALL_DIR="$HOME/.local/bin"
 fi
 
 # Variables
 REPO="coolapso/go-live-server"
 VERSION=${VERSION:-"latest"}
-INSTALL_DIR="/usr/local/bin"
 
 # Determine OS and Architecture
 OS=$(uname | tr '[:upper:]' '[:lower:]')
