@@ -56,6 +56,14 @@ curl -L http://live-server.coolapso.sh/install.sh | bash
 curl -L http://live-server.coolapso.sh/install.sh | VERSION="v1.1.0" bash
 ```
 
+#### System-wide installation
+
+Simply execute the script as root with `sudo` or run it from a root shell. By doing this, every user will be able to access the binary
+
+```
+sudo curl -L http://live-server.coolapso.sh/install.sh | bash
+```
+
 ### Manual install
 
 * Grab the binary from the [releases page](https://github.com/coolapso/go-live-server/releases).
